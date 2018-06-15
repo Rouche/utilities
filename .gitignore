@@ -1,0 +1,11 @@
+.settings
+.classpath
+.project
+bin
+build
+target
+*.iml
+src/fr
+src/com
+lib
+Tests.log

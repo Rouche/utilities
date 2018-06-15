@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.22" id="1">
+    <list-property name="configVars">
+        <structure>
+            <property name="name">__isdisplay__reportId_328_0</property>
+            <property name="value">4942</property>
+        </structure>
+        <structure>
+            <property name="name">reportId_328_1</property>
+            <property name="value">4942.0</property>
+        </structure>
+        <structure>
+            <property name="name">reportId_328_type_</property>
+            <property name="value">float</property>
+        </structure>
+    </list-property>
+</report>

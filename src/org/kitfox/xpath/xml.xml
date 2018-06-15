@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?><S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"><S:Body><ns2:processFileReceivedResponse xmlns:ns2="http://FileReceived"><return>
+<MyXml>
+   <MyRole>
+      <RoleGuid>AA</RoleGuid>
+      <ClientGuid>BB</ClientGuid>
+      <CompanyGuid>CC</CompanyGuid>
+      <RoleCode>02</RoleCode>
+      <StatusCode>01</StatusCode>
+   </MyRole>
+   <MyRole>
+      <RoleGuid>1AA</RoleGuid>
+      <ClientGuid>1BB</ClientGuid>
+      <CompanyGuid>1CC</CompanyGuid>
+      <RoleCode>02</RoleCode>
+      <StatusCode>01</StatusCode>
+   </MyRole>
+   <MyClient>
+      <ClientGuid>BB</ClientGuid>
+      <TypeCode>43</TypeCode>
+      <Radio1>02</Radio1>
+      <UpdatedGmt>2013-11-28 19:08:02.997</UpdatedGmt>
+      <LegalResidenceCountryCode>CA</LegalResidenceCountryCode>
+   </MyClient>
+   <MyClientField>
+      <ClientGuid>BB</ClientGuid>
+      <FieldName>DisplayName</FieldName>
+      <FieldTypeCode>02</FieldTypeCode>
+      <TextValue/>
+   </MyClientField>
+   <MyClientField>
+      <ClientGuid>1BB</ClientGuid>
+      <FieldName>IdentificationNumber</FieldName>
+      <FieldTypeCode>02</FieldTypeCode>
+      <TextValue>test!</TextValue>
+   </MyClientField>
+</MyXml></return></ns2:processFileReceivedResponse></S:Body></S:Envelope>
