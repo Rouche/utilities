@@ -24,8 +24,6 @@ public class JJWTTest {
     @Test
     public void test() throws Exception {
 
-        JJWTTest test = new JJWTTest();
-
         byte[] encoded = Keys.secretKeyFor(SignatureAlgorithm.HS256).getEncoded();
 
         String base64 = new String(Base64.getEncoder().encode(encoded));

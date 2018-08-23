@@ -51,6 +51,8 @@
 
         <schemas.folder>${basedir}/src/main/schemas/</schemas.folder>
         <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
+
+        <flying.saucer.version>9.1.15</flying.saucer.version>
     </properties>
 
     <dependencies>
@@ -138,6 +140,18 @@
             <groupId>org.javassist</groupId>
             <artifactId>javassist</artifactId>
             <version>3.21.0-GA</version>
+        </dependency>
+
+        <!--Flying saucer -->
+        <dependency>
+            <groupId>org.xhtmlrenderer</groupId>
+            <artifactId>flying-saucer-core</artifactId>
+            <version>${flying.saucer.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.xhtmlrenderer</groupId>
+            <artifactId>flying-saucer-pdf-openpdf</artifactId>
+            <version>${flying.saucer.version}</version>
         </dependency>
 
         <dependency>
