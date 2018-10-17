@@ -38,7 +38,7 @@
 
         <!-- Jackson -->
         <!-- http://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
-        <jackson.version>2.9.1</jackson.version>
+        <jackson.version>2.9.7</jackson.version>
 
         <!-- Tests -->
         <!-- http://mockito.org/ -->
