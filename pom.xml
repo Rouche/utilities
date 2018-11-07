@@ -112,11 +112,11 @@
 
         <!-- Confluence
             https://mvnrepository.com/artifact/com.atlassian.confluence/confluence -->
-        <dependency>
-            <groupId>com.atlassian.confluence</groupId>
-            <artifactId>confluence</artifactId>
-            <version>5.9.1-OD-2015.42.1-0002</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.atlassian.confluence</groupId>-->
+            <!--<artifactId>confluence</artifactId>-->
+            <!--<version>5.9.1-OD-2015.42.1-0002</version>-->
+        <!--</dependency>-->
         <!-- https://mvnrepository.com/artifact/xml-apis/xml-apis -->
         <!-- https://mvnrepository.com/artifact/xml-apis/xml-apis -->
         <dependency>
@@ -140,6 +140,14 @@
             <groupId>org.javassist</groupId>
             <artifactId>javassist</artifactId>
             <version>3.21.0-GA</version>
+        </dependency>
+
+        <!-- Spring -->
+        <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-crypto -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-crypto</artifactId>
+            <version>5.1.1.RELEASE</version>
         </dependency>
 
         <!--Flying saucer -->
