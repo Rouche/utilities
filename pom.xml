@@ -40,6 +40,8 @@
         <!-- http://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
         <jackson.version>2.9.7</jackson.version>
 
+        <jjwt.version>0.10.5</jjwt.version>
+
         <!-- Tests -->
         <!-- http://mockito.org/ -->
         <mockito.version>1.10.19</mockito.version>
@@ -108,6 +110,25 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>${logback.version}</version>
+        </dependency>
+
+        <!-- JWT -->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-api</artifactId>
+            <version>${jjwt.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>${jjwt.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId>
+            <version>${jjwt.version}</version>
+            <scope>compile</scope> <!-- Not runtime -->
         </dependency>
 
         <!-- Confluence
