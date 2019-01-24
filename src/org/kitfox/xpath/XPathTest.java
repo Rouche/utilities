@@ -1,27 +1,22 @@
 package org.kitfox.xpath;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.xpath.*;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.xpath.XPath;
-import javax.xml.xpath.XPathConstants;
-import javax.xml.xpath.XPathExpression;
-import javax.xml.xpath.XPathExpressionException;
-import javax.xml.xpath.XPathFactory;
 
 import org.apache.commons.io.IOUtils;
 import org.w3c.dom.Document;
 
 public class XPathTest {
 
-    public static void main(String args[]) throws Exception {
+    public static void main(String[] args) throws Exception {
         InputStream inputStream = (new XPathTest()).getClass().getResourceAsStream("./xml.xml");
 
-        String s = IOUtils.toString(inputStream);
+        String s = IOUtils.toString(inputStream, "UTF-8");
 
         String outgoingPattern = "(?s)<MyXml[^\\>]*>(.*)</MyXml[^\\>]*>";
         Pattern pattern = Pattern.compile(outgoingPattern, Pattern.DOTALL);

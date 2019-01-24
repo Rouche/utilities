@@ -9,7 +9,7 @@ import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.bouncycastle.util.encoders.Base64;
@@ -27,7 +27,7 @@ public class Http {
 
     public static void main(String[] args) {
 
-        HttpClient client = new DefaultHttpClient();
+        HttpClient client = HttpClientBuilder.create().build();
         HttpPost post = new HttpPost("https://api.test.ulaval.ca/ul/auth/oauth/v2/token");
         String base = new String(Base64.encode("l7xxb55b37825df04746b5da0f547eab4d02:e3b4aa96f64b47b09f5eebb0d494ea36".getBytes()));
 

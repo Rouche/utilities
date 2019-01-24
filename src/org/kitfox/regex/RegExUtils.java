@@ -5,7 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang3.StringEscapeUtils;
+import org.apache.commons.text.StringEscapeUtils;
 
 public class RegExUtils {
     private RegExUtils() {
@@ -22,11 +22,11 @@ public class RegExUtils {
         return null;
     }
 
-    public static void main(String args[]) throws Exception {
+    public static void main(String[] args) throws Exception {
         InputStream inputStream = (new RegExUtils()).getClass().getResourceAsStream("./test.xml");
 
         try {
-            String s = IOUtils.toString(inputStream);
+            String s = IOUtils.toString(inputStream, "UTF-8");
 
             System.out.println(StringEscapeUtils.unescapeXml(find(s)));
 
