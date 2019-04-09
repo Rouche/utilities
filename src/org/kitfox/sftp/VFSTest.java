@@ -27,7 +27,7 @@ public class VFSTest {
         //        String connectionUrl = String.format("sftp://%s@%s", user, host);
 
         // only for password authentication
-        String connectionUrl = String.format("sftp://%s:%s@%s", "rouche", "rouche123", "127.0.0.1");
+        String connectionUrl = String.format("sftp://%s:%s@%s", ConfigUtils.getUser(), ConfigUtils.getPassword(), ConfigUtils.getHost());
 
         // Connection set-up
         FileObject remoteRootDirectory = fileSystemManager.resolveFile(connectionUrl);
@@ -45,20 +45,22 @@ public class VFSTest {
         log.debug("Children of " + remoteRootDirectory.getName().getURI());
         log.debug("====================================");
         for (int i = 0; i < children.length; i++) {
-            if(children[i].getType() == FileType.FOLDER) {
+            if (children[i].getType() == FileType.FOLDER) {
                 listFilesVFS(children[i], path);
             } else {
                 log.debug(">>>>>>>>>>>>>>>> Processing file " + children[i].getName().getBaseName());
-                FileContent content = children[i].getContent();
+                if (ConfigUtils.getConsoleContent()) {
+                    FileContent content = children[i].getContent();
 
-                InputStreamReader reader = new InputStreamReader(content.getInputStream());
-                BufferedReader bufferedReader = new BufferedReader(reader);
-                StringBuffer stringBuffer = new StringBuffer();
-                String line;
-                while ((line = bufferedReader.readLine()) != null) {
-                    System.out.println(line);
+                    InputStreamReader reader = new InputStreamReader(content.getInputStream());
+                    BufferedReader bufferedReader = new BufferedReader(reader);
+                    StringBuffer stringBuffer = new StringBuffer();
+                    String line;
+                    while ((line = bufferedReader.readLine()) != null) {
+                        System.out.println(line);
+                    }
+                    reader.close();
                 }
-                reader.close();
             }
         }
     }
