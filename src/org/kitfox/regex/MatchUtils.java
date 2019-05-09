@@ -7,7 +7,7 @@ public class MatchUtils {
     private MatchUtils() {
     }
 
-    public static void main(String args[]) throws Exception {
+    public static void main(String[] args) throws Exception {
         System.out.println("2.456_-79012".matches("(\\w|-|\\.){1,12}"));
 
         System.out.println("A9A9A9".matches("\\p{Alpha}\\d\\p{Alpha}\\d\\p{Alpha}\\d"));
@@ -30,5 +30,22 @@ public class MatchUtils {
         System.out.println(m.matches());
         m = p.matcher("");
         System.out.println(m.matches());
+
+        p = Pattern.compile("(\\w+)(\\[((\\w+)(\\|(\\w+))*)\\])?");
+
+        writeGroups(p, "werfwe[a|b|c|f]");
+        writeGroups(p, "werfwe[a|b]");
+        writeGroups(p, "werfwe[a]");
+        writeGroups(p, "werfwe");
+    }
+
+    private static void writeGroups(Pattern p, String test) {
+        Matcher m = p.matcher(test);
+        m.matches();
+
+        System.out.println(m.groupCount());
+        for(int i = 0; i < m.groupCount(); ++i) {
+            System.out.println("Group " + i + ": " + m.group(i));
+        }
     }
 }
