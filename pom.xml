@@ -30,7 +30,7 @@
 
         <!-- Database -->
         <!-- http://hibernate.org/orm/downloads/ -->
-        <hibernate.version>5.2.11.Final</hibernate.version>
+        <hibernate.version>5.3.9.Final</hibernate.version>
         <!-- http://hibernate.org/validator/ -->
         <hibernate-validator.version>6.0.2.Final</hibernate-validator.version>
         <!-- http://www.liquibase.org/download/index.html -->
