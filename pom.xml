@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.kitfox</groupId>
     <artifactId>utilities</artifactId>
@@ -134,9 +134,9 @@
         <!-- Confluence
             https://mvnrepository.com/artifact/com.atlassian.confluence/confluence -->
         <!--<dependency>-->
-            <!--<groupId>com.atlassian.confluence</groupId>-->
-            <!--<artifactId>confluence</artifactId>-->
-            <!--<version>5.9.1-OD-2015.42.1-0002</version>-->
+        <!--<groupId>com.atlassian.confluence</groupId>-->
+        <!--<artifactId>confluence</artifactId>-->
+        <!--<version>5.9.1-OD-2015.42.1-0002</version>-->
         <!--</dependency>-->
         <!-- https://mvnrepository.com/artifact/xml-apis/xml-apis -->
         <!-- https://mvnrepository.com/artifact/xml-apis/xml-apis -->
@@ -145,12 +145,12 @@
             <artifactId>xml-apis</artifactId>
             <version>1.4.01</version>
         </dependency>
-		<!-- https://mvnrepository.com/artifact/org.imgscalr/imgscalr-lib -->
-		<dependency>
-			<groupId>org.imgscalr</groupId>
-			<artifactId>imgscalr-lib</artifactId>
-			<version>4.2</version>
-		</dependency>
+        <!-- https://mvnrepository.com/artifact/org.imgscalr/imgscalr-lib -->
+        <dependency>
+            <groupId>org.imgscalr</groupId>
+            <artifactId>imgscalr-lib</artifactId>
+            <version>4.2</version>
+        </dependency>
 
         <dependency>
             <groupId>c3p0</groupId>
@@ -321,21 +321,16 @@
             <artifactId>org.eclipse.birt.runtime</artifactId>
             <version>4.6.0-20160607</version>
         </dependency>
-		<dependency>
-		    <groupId>org.apache.xmlgraphics</groupId>
-		    <artifactId>batik-util</artifactId>
-		    <version>1.9.1</version>
-		</dependency>
-		<dependency>
-		    <groupId>org.apache.xmlgraphics</groupId>
-		    <artifactId>batik-css</artifactId>
-		    <version>1.9.1</version>
-		</dependency>
-		<dependency>
-		    <groupId>org.eclipse.birt.runtime</groupId>
-		    <artifactId>org.eclipse.birt.runtime</artifactId>
-		    <version>4.6.0-20160607</version>
-		</dependency>
+        <dependency>
+            <groupId>org.apache.xmlgraphics</groupId>
+            <artifactId>batik-util</artifactId>
+            <version>1.9.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.xmlgraphics</groupId>
+            <artifactId>batik-css</artifactId>
+            <version>1.9.1</version>
+        </dependency>
 
         <!-- SFTP -->
         <!-- https://mvnrepository.com/artifact/com.jcraft/jsch -->
@@ -402,6 +397,29 @@
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <artifactSet>
+                                <excludes>
+                                    <exclude>org.eclipse.birt.runtime:*</exclude>
+                                    <exclude>org.eclipse.birt.runtime.3_7_1</exclude>
+                                </excludes>
+                            </artifactSet>
+                        </configuration>
+                    </execution>
+                </executions>
+                <configuration>
+                    <finalName>shade-${artifactId}-${version}</finalName>
                 </configuration>
             </plugin>
         </plugins>
