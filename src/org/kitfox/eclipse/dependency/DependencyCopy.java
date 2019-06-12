@@ -1,11 +1,6 @@
 package org.kitfox.eclipse.dependency;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.nio.channels.FileChannel;
 
 public class DependencyCopy {
@@ -26,7 +21,7 @@ public class DependencyCopy {
         outputDir.mkdirs();
         BufferedReader br = new BufferedReader(new FileReader(file));
 
-        // TODO: Utiliser en plugin Eclipse pour aller chercher les Java Buildpath Variable et
+        // Utiliser en plugin Eclipse pour aller chercher les Java Buildpath Variable et
         // convertir en path pour que ce soit plus generique.
         String var = "C:/Documents and Settings/jf.larouche/.ant/cache/";
 

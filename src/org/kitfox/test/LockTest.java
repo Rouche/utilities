@@ -17,7 +17,6 @@ public class LockTest {
             FileStore store = Files.getFileStore(path);
             System.out.println(store.getTotalSpace());
         } catch(IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

@@ -1,5 +1,6 @@
 package org.kitfox.image;
 
+import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -7,14 +8,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Base64;
 
-import javax.imageio.ImageIO;
-
 import org.imgscalr.Scalr;
 
 public class TestImage {
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         File outputfile = new File("c:\\shared\\saved.jpg");
         try {
             ImageIO.write(TestImage.base64ToBufferedImage(), "jpg", outputfile);

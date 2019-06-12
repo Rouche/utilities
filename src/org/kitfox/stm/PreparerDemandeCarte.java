@@ -1,12 +1,15 @@
 package org.kitfox.stm;
 
+import javax.ws.rs.HttpMethod;
+import javax.xml.bind.JAXBContext;
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -14,20 +17,8 @@ import java.util.Base64;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import javax.ws.rs.HttpMethod;
-import javax.xml.bind.JAXBContext;
-import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.datatype.DatatypeFactory;
-import javax.xml.datatype.XMLGregorianCalendar;
-
 import org.kitfox.stm.msg.MessageLegal;
-import org.kitfox.stm.v1.Contact;
-import org.kitfox.stm.v1.Erreur;
-import org.kitfox.stm.v1.Erreurs;
-import org.kitfox.stm.v1.Etudiant;
-import org.kitfox.stm.v1.Institution;
-import org.kitfox.stm.v1.ObjectFactory;
-import org.kitfox.stm.v1.PreparationDemandeCarteEtudiant;
+import org.kitfox.stm.v1.*;
 
 /**
  * @author Jean-Francois Larouche
@@ -149,7 +140,7 @@ public class PreparerDemandeCarte {
         }
     }
 
-    private static HttpURLConnection createConnection(boolean input, boolean output, String method) throws MalformedURLException, IOException, ProtocolException {
+    private static HttpURLConnection createConnection(boolean input, boolean output, String method) throws IOException {
         URL url = new URL("https://qa-api.stm.info/pub/ceel/v1pp/obtenirmessagelegal");
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setDoInput(input);
@@ -158,7 +149,6 @@ public class PreparerDemandeCarte {
         connection.setRequestMethod(method);
         //connection.setRequestProperty("Content-Type", "application/xml");
 
-        //TODO Combien de timeout?
         connection.setConnectTimeout(30000);
         connection.setReadTimeout(30000);
 
