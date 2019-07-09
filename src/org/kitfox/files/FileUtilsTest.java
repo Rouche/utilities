@@ -18,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 public class FileUtilsTest {
 
     @Test
-    public void test() throws Exception {
+    public void testOverride() throws Exception {
         URL url = FileUtilsTest.class.getResource("blah.txt");
 
         File file = Paths.get(url.toURI()).toFile();
