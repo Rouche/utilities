@@ -2,11 +2,13 @@
 .classpath
 .project
 bin
+out
 build
 target
 *.iml
-src/fr
-src/com
 lib
 Tests.log
 .idea
+
+src/fr/
+src/com/
