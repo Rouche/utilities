@@ -57,6 +57,7 @@ public class Question4_1 {
         if(start == null || end == null) {
             return false;
         }
+        start.state = NodeState.Visiting;
         return searchDFSInternal(start, end);
     }
 
