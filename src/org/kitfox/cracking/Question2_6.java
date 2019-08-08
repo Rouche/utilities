@@ -27,16 +27,22 @@ public class Question2_6 {
         if(node == null) {
             return null;
         }
+
         LinkedListNode current = null;
-        LinkedListNode next = node.next;
-        while (next != null) {
-            node.next = current;
-            current = node;
-            node = next;
-            next = next.next;
+        LinkedListNode walker = node;
+        LinkedListNode runner = walker.next;
+        while (runner != null) {
+            walker.next = current;
+            current = walker;
+            walker = runner;
+            runner = runner.next;
+            // Circular test
+            if(runner == node) {
+                node.next = runner;
+            }
         }
-        node.next = current;
-        return node;
+        walker.next = current;
+        return walker;
     }
 
     public static boolean isEqual(LinkedListNode<Integer> one, LinkedListNode<Integer> two) {
@@ -85,8 +91,7 @@ public class Question2_6 {
     }
 
     @Test
-    public void testReverseOne() {
-        int length = 1;
+    public void testReverseOneNode() {
         LinkedListNode<Integer>[] nodes = new LinkedListNode[1];
         nodes[0] = new LinkedListNode<>(0, null, null);
 
