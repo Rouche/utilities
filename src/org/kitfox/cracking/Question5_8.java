@@ -4,7 +4,7 @@ import org.junit.Test;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * @Author Jean-Francois Larouche (resolutech) on 2019-08-06
+ * @author Jean-Francois Larouche (resolutech) on 2019-08-06
  */
 @Slf4j
 public class Question5_8 {
