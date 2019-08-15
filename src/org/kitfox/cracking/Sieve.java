@@ -10,7 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 public class Sieve {
 
     @Test
-    public void testDrawLine() {
+    public void testPrimes() {
         int[] result = generatePrimes(100);
 
         for (int p : result) {
