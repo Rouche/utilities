@@ -128,8 +128,15 @@ public class MessageSorter {
 		//   Everything that matches the first Predicate is put into index 0 of the array and
 		//   everything that matches the second Predicate is put into the index of 1 of the array
 		//   and so on for multiple branching Predicates
-		KStream<String, JsonNode>[] metricTypes = source.branch(isGauge, isCounter);
-		
+		KStream<String, JsonNode>[] metricTypes = source.branch(new Predicate[]{isGauge, isCounter});
+
+		///////////////////////////////
+		// IDEE DE SOLUTION
+		///////////////////////////////
+		// - Faire une topic par transaction differente
+		// - Faire un branch pour chaque topic avec un predicate sur la transaction
+		// - Relire chaque topic 1 par une et remettre dans une topic de fin.
+
 		// Take all messages coming into the metricTypes streams and sink them to the proper topics
 		// In this case, metricTypes[0] is filled with gauge events and metricTypes[1] is filled with counter
 		//   events. We sink them to appropriately named topics. And again, we use the stringSerde for the key
