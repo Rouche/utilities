@@ -133,8 +133,9 @@ public class MessageSorter {
 		///////////////////////////////
 		// IDEE DE SOLUTION
 		///////////////////////////////
-		// - Faire une topic par transaction differente
-		// - Faire un branch pour chaque topic avec un predicate sur la transaction
+		// - Garder toutes les cles de transaction pendant le 1er read du fichier.
+		// - creer une topic par transaction differente
+		// - Faire un branch du source pour chaque topic avec un predicate sur la transaction
 		// - Relire chaque topic 1 par une et remettre dans une topic de fin.
 
 		// Take all messages coming into the metricTypes streams and sink them to the proper topics
