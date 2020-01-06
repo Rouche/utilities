@@ -131,7 +131,7 @@ public class MessageSorter {
 		KStream<String, JsonNode>[] metricTypes = source.branch(new Predicate[]{isGauge, isCounter});
 
 		///////////////////////////////
-		// IDEE DE SOLUTION
+		// ROUCHE_DOCS: IDEE DE SOLUTION
 		///////////////////////////////
 		// - Garder toutes les cles de transaction pendant le 1er read du fichier.
 		// - creer une topic par transaction differente
