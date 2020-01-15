@@ -9,6 +9,7 @@ target
 lib
 Tests.log
 .idea
+data
 
 src/fr/
 src/com/
