@@ -39,7 +39,7 @@
         <!-- Jackson -->
         <!-- http://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
         <jackson.annotations.version>2.9.9</jackson.annotations.version>
-        <jackson.version>2.9.10.1</jackson.version>
+        <jackson.version>2.9.10.3</jackson.version>
 
         <jjwt.version>0.10.5</jjwt.version>
 
