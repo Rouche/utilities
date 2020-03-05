@@ -38,8 +38,7 @@
 
         <!-- Jackson -->
         <!-- http://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
-        <jackson.annotations.version>2.9.9</jackson.annotations.version>
-        <jackson.version>2.9.10.3</jackson.version>
+        <jackson.version>2.10.3</jackson.version>
 
         <jjwt.version>0.10.5</jjwt.version>
 
@@ -234,7 +233,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
-            <version>${jackson.annotations.version}</version>
+            <version>${jackson.version}</version>
         </dependency>
         <dependency>
             <!-- https://github.com/FasterXML/jackson-databind/ -->
