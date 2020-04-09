@@ -4,6 +4,7 @@
 package org.kitfox.date;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeParseException;
@@ -25,6 +26,28 @@ public class ZonedLocalDateParseAndMarshall {
         log.info(ZonedDateTime.parse("2020-04-09T18:03:26Z").toString());
     }
 
+    @Test
+    public void local() {
+        log.info(LocalDate.parse("2020-04-01").toString());
+    }
+
+    @Test
+    public void offset() {
+
+        log.info(OffsetDateTime.parse("2020-04-09T18:03:26-05:00").toString());
+        log.info(OffsetDateTime.parse("2020-04-09T18:03:26Z").toString());
+    }
+
+    @Test
+    public void localDateTime() {
+        log.info(LocalDateTime.parse("2020-04-03T18:03:26").toString());
+    }
+
+    @Test(expected = DateTimeParseException.class)
+    public void noDash_NoOffset() {
+        ZonedDateTime.parse("2020-04-09T18:03:26");
+    }
+
     @Test(expected = DateTimeParseException.class)
     public void noDash_Zoned() {
         ZonedDateTime.parse("20200409T180326Z");
@@ -35,25 +58,28 @@ public class ZonedLocalDateParseAndMarshall {
         ZonedDateTime.parse("2020-04-09");
     }
 
-    @Test
-    public void local() {
-        log.info(LocalDate.parse("2020-04-01").toString());
-    }
-
     @Test(expected = DateTimeParseException.class)
     public void local_Zoned() {
         log.info(LocalDate.parse("2020-04-09T18:03:26+00:00").toString());
     }
 
-    @Test
-    public void offset() throws Exception {
-
-        log.info(OffsetDateTime.parse("2020-04-09T18:03:26-05:00").toString());
-        log.info(OffsetDateTime.parse("2020-04-09T18:03:26Z").toString());
-    }
-
     @Test(expected = DateTimeParseException.class)
     public void offset_Zoned() {
         log.info(OffsetDateTime.parse("2020-04-09T18:03:26-05:00[America/Toronto]").toString());
+    }
+
+    @Test(expected = DateTimeParseException.class)
+    public void offset_NoOffset() {
+        log.info(OffsetDateTime.parse("2020-04-09T18:03:26").toString());
+    }
+
+    @Test(expected = DateTimeParseException.class)
+    public void localDateTime_Offset() {
+        log.info(LocalDateTime.parse("2020-04-03T18:03:26-5:00").toString());
+    }
+
+    @Test(expected = DateTimeParseException.class)
+    public void localDateTime_NoTime() {
+        log.info(LocalDateTime.parse("2020-04-03").toString());
     }
 }
