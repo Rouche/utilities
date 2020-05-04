@@ -3,14 +3,12 @@
  */
 package org.kitfox.date;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
-import java.time.ZonedDateTime;
+import java.time.*;
 import java.time.format.DateTimeParseException;
 
 import org.junit.Test;
 import lombok.extern.slf4j.Slf4j;
+import static org.assertj.core.api.Assertions.*;
 
 /**
  * @author larj15
@@ -41,6 +39,29 @@ public class ZonedLocalDateParseAndMarshall {
     @Test
     public void localDateTime() {
         log.info(LocalDateTime.parse("2020-04-03T18:03:26").toString());
+    }
+
+    @Test
+    public void instantToOffset(){
+        Instant instant = Instant.now();
+        String s = instant.toString();
+        String offset = OffsetDateTime.parse(s).toString();
+
+        log.info("Offset: [{}]", offset);
+
+        assertThat(s).isEqualTo(offset);
+    }
+
+    @Test(expected = DateTimeParseException.class)
+    public void offsetToInstant(){
+        OffsetDateTime offset = OffsetDateTime.now();
+        String s = offset.toString();
+        log.info("Offset: [{}]", s);
+        String instant = Instant.parse(s).toString();
+
+        log.info(instant);
+
+        assertThat(s).isEqualTo(OffsetDateTime.parse(s).toString());
     }
 
     @Test(expected = DateTimeParseException.class)
