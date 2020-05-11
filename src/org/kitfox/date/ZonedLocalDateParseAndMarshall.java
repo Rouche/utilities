@@ -8,7 +8,8 @@ import java.time.format.DateTimeParseException;
 
 import org.junit.Test;
 import lombok.extern.slf4j.Slf4j;
-import static org.assertj.core.api.Assertions.*;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * @author larj15
@@ -19,47 +20,47 @@ public class ZonedLocalDateParseAndMarshall {
     @Test
     public void iso8601_Zoned() throws Exception {
 
-        log.info(ZonedDateTime.parse("2020-04-09T18:03:26-05:00[America/Toronto]").toString());
-        log.info(ZonedDateTime.parse("2020-04-09T18:03:26-05:00").toString());
-        log.info(ZonedDateTime.parse("2020-04-09T18:03:26Z").toString());
+        log.info("ZonedDateTime from zone: {}", ZonedDateTime.parse("2020-04-09T18:03:26-05:00[America/Toronto]").toString());
+        log.info("ZonedDateTime from -5: {}", ZonedDateTime.parse("2020-04-09T18:03:26-05:00").toString());
+        log.info("ZonedDateTime from Z: {}", ZonedDateTime.parse("2020-04-09T18:03:26Z").toString());
     }
 
     @Test
     public void local() {
-        log.info(LocalDate.parse("2020-04-01").toString());
+        log.info("LocalDate: {}", LocalDate.parse("2020-04-01").toString());
     }
 
     @Test
     public void offset() {
 
-        log.info(OffsetDateTime.parse("2020-04-09T18:03:26-05:00").toString());
-        log.info(OffsetDateTime.parse("2020-04-09T18:03:26Z").toString());
+        log.info("Offset from -5: {}", OffsetDateTime.parse("2020-04-09T18:03:26-05:00").toString());
+        log.info("Offset from Z: {}", OffsetDateTime.parse("2020-04-09T18:03:26Z").toString());
     }
 
     @Test
     public void localDateTime() {
-        log.info(LocalDateTime.parse("2020-04-03T18:03:26").toString());
+        log.info("LocalDateTime: {}", LocalDateTime.parse("2020-04-03T18:03:26").toString());
     }
 
     @Test
-    public void instantToOffset(){
+    public void instantToOffset() {
         Instant instant = Instant.now();
         String s = instant.toString();
         String offset = OffsetDateTime.parse(s).toString();
 
-        log.info("Offset: [{}]", offset);
+        log.info("Offset from Instant: [{}]", offset);
 
         assertThat(s).isEqualTo(offset);
     }
 
     @Test(expected = DateTimeParseException.class)
-    public void offsetToInstant(){
+    public void offsetToInstant() {
         OffsetDateTime offset = OffsetDateTime.now();
         String s = offset.toString();
-        log.info("Offset: [{}]", s);
+        log.info("Offset now: [{}]", s);
         String instant = Instant.parse(s).toString();
 
-        log.info(instant);
+        log.info("Instant from Offset: {}", instant);
 
         assertThat(s).isEqualTo(OffsetDateTime.parse(s).toString());
     }
