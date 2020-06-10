@@ -9,6 +9,8 @@
     <properties>
 
         <java.version>11</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
 
         <!-- Commons -->
         <commons.lang3.version>3.6</commons.lang3.version>
@@ -52,11 +54,16 @@
 
         <!-- Encoding -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <schemas.folder>${basedir}/src/main/schemas/</schemas.folder>
         <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
 
         <flying.saucer.version>9.1.15</flying.saucer.version>
+
+        <org.mapstruct.version>1.3.1.Final</org.mapstruct.version>
+        <lombok.version>1.18.12</lombok.version>
+
     </properties>
 
     <dependencies>
@@ -270,23 +277,6 @@
             <artifactId>jose4j</artifactId>
             <version>0.6.1</version>
         </dependency>
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt-api</artifactId>
-            <version>0.10.5</version>
-        </dependency>
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt-impl</artifactId>
-            <version>0.10.5</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt-jackson</artifactId>
-            <version>0.10.5</version>
-            <scope>runtime</scope>
-        </dependency>
         <!-- https://mvnrepository.com/artifact/net.sourceforge.jexcelapi/jxl -->
         <dependency>
             <groupId>net.sourceforge.jexcelapi</groupId>
@@ -354,11 +344,6 @@
         </dependency>
         <dependency>
             <groupId>org.apache.xmlgraphics</groupId>
-            <artifactId>batik-util</artifactId>
-            <version>1.9.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.xmlgraphics</groupId>
             <artifactId>batik-css</artifactId>
             <version>1.9.1</version>
         </dependency>
@@ -370,11 +355,6 @@
         <dependency>
             <groupId>org.apache.xmlgraphics</groupId>
             <artifactId>batik-util</artifactId>
-            <version>1.9.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.xmlgraphics</groupId>
-            <artifactId>batik-css</artifactId>
             <version>1.9.1</version>
         </dependency>
 
@@ -438,24 +418,33 @@
         </resources>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.7.0</version>
+                <version>3.8.1</version>
                 <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
                     <annotationProcessorPaths>
                         <path>
                             <groupId>org.mapstruct</groupId>
                             <artifactId>mapstruct-processor</artifactId>
                             <version>${org.mapstruct.version}</version>
                         </path>
-                        <!-- other annotation processors -->
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
                     </annotationProcessorPaths>
+                    <compilerArgs>
+                        <compilerArg>
+                            -Amapstruct.defaultComponentModel=spring
+                        </compilerArg>
+                    </compilerArgs>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.4</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -473,7 +462,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <finalName>shade-${artifactId}-${version}</finalName>
+                    <finalName>shade-${project.artifactId}-${project.version}</finalName>
                 </configuration>
             </plugin>
         </plugins>
