@@ -50,7 +50,7 @@
         <!-- http://mockito.org/ -->
         <mockito.version>1.10.19</mockito.version>
         <!-- http://junit.org/ -->
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
 
         <!-- Encoding -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
