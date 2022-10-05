@@ -42,7 +42,7 @@
 
         <!-- Jackson -->
         <!-- http://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
-        <jackson.version>2.10.3</jackson.version>
+        <jackson.version>2.12.6.1</jackson.version>
 
         <jjwt.version>0.10.5</jjwt.version>
 
