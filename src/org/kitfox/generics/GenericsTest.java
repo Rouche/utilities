@@ -35,9 +35,9 @@ public class GenericsTest {
         final GenericClass concreteClass2 = new ConcreteClass2();
         info(concreteClass2);
 
-        log.info("Different concrete equals {}", concreteClass.getClass().equals(concreteClass2.getClass()));
+        log.info("Different concrete equals? {}", concreteClass.getClass().equals(concreteClass2.getClass()));
 
-        log.info(new ConcreteClass().getClass().getName());
+        log.info("Same concrete class name equals? {}", new ConcreteClass().getClassName().equals(concreteClass.getClassName()));
 
 
 
