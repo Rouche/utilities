@@ -32,43 +32,43 @@ public class JsonPathTest {
 
         log.info("Date: [{}]", dateString);
     }
-
-    private fun parseRulesTreeForRadius(rules: String?): String {
-        var conf = Configuration.builder().jsonProvider(GsonJsonProvider()).mappingProvider(GsonMappingProvider()).build();
-
-        var ctx: ReadContext = JsonPath.using(conf).parse(rules);
-
-        val root = ctx.json() as JsonObject
-        recurseRulesTree(root)
-
-        return ctx.jsonString()
-    }
-
-    private fun recurseRulesTree(node: JsonObject) {
-        if(node.get("type").asString == "spatial") {
-            maybeConvertRadiusToRadiant(node)
-        } else {
-            val fields = node.get("fields")?.asJsonArray
-            if(fields != null) {
-                traverseRulesArray(fields)
-            }
-        }
-    }
-
-    private fun traverseRulesArray(array: JsonArray) {
-        array.forEach {
-            recurseRulesTree(it as JsonObject)
-        }
-    }
-
-    private fun maybeConvertRadiusToRadiant(spacial: JsonObject) {
-        val bound = spacial.get("bound")?.asJsonObject
-        val radius = bound?.get("radius")?.asFloat
-
-        if(radius != null) {
-            val earthPI = Math.PI * 6378137.0
-            val radiant = ((180 * radius / earthPI) * 1000).toFloat()
-            bound.addProperty("radius", radiant)
-        }
-    }
+//
+//    private fun parseRulesTreeForRadius(rules: String?): String {
+//        var conf = Configuration.builder().jsonProvider(GsonJsonProvider()).mappingProvider(GsonMappingProvider()).build();
+//
+//        var ctx: ReadContext = JsonPath.using(conf).parse(rules);
+//
+//        val root = ctx.json() as JsonObject
+//        recurseRulesTree(root)
+//
+//        return ctx.jsonString()
+//    }
+//
+//    private fun recurseRulesTree(node: JsonObject) {
+//        if(node.get("type").asString == "spatial") {
+//            maybeConvertRadiusToRadiant(node)
+//        } else {
+//            val fields = node.get("fields")?.asJsonArray
+//            if(fields != null) {
+//                traverseRulesArray(fields)
+//            }
+//        }
+//    }
+//
+//    private fun traverseRulesArray(array: JsonArray) {
+//        array.forEach {
+//            recurseRulesTree(it as JsonObject)
+//        }
+//    }
+//
+//    private fun maybeConvertRadiusToRadiant(spacial: JsonObject) {
+//        val bound = spacial.get("bound")?.asJsonObject
+//        val radius = bound?.get("radius")?.asFloat
+//
+//        if(radius != null) {
+//            val earthPI = Math.PI * 6378137.0
+//            val radiant = ((180 * radius / earthPI) * 1000).toFloat()
+//            bound.addProperty("radius", radiant)
+//        }
+//    }
 }
